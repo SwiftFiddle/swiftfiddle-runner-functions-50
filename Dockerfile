@@ -38,7 +38,6 @@ RUN SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | 
     && apt-get purge -y curl \
     && apt-get -y autoremove \
     && export GNUPGHOME="$(mktemp -d)" \
-    && set -e; \
     && tar -xzf swift.tar.gz --directory / --strip-components=1 \
     && rm -r "$GNUPGHOME" swift.tar.gz.sig swift.tar.gz \
     && chmod -R o+r /usr/lib/swift
