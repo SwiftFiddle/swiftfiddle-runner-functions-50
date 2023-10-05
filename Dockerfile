@@ -39,15 +39,6 @@ RUN SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | 
     && apt-get -y autoremove \
     && export GNUPGHOME="$(mktemp -d)" \
     && set -e; \
-    for key in \
-    # pub   4096R/ED3D1561 2019-03-22 [expires: 2021-03-21]
-    #       Key fingerprint = A62A E125 BBBF BB96 A6E0  42EC 925C C1CC ED3D 1561
-    # uid                  Swift 5.x Release Signing Key <swift-infrastructure@swift.org          
-    A62AE125BBBFBB96A6E042EC925CC1CCED3D1561 \
-    ; do \
-    gpg --quiet --keyserver keyserver.ubuntu.com --recv-keys "$key"; \
-    done \
-    && gpg --batch --verify --quiet swift.tar.gz.sig swift.tar.gz \
     && tar -xzf swift.tar.gz --directory / --strip-components=1 \
     && rm -r "$GNUPGHOME" swift.tar.gz.sig swift.tar.gz \
     && chmod -R o+r /usr/lib/swift
