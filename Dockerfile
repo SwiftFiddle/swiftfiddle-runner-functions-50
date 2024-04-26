@@ -1,6 +1,6 @@
 FROM denoland/deno:bin-1.39.0 AS deno
 
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 LABEL Description="Docker Container for the Swift programming language"
 
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
